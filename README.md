@@ -15,7 +15,7 @@ The AgBioData GFF3 working group has developed recommendations to solve common p
 **References**
 1.  [Sequence Ontology gff3 specifications](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md)
 2.  [AgBiodata consortium](https://www.agbiodata.org/) ![](https://www.agbiodata.org/sites/default/files/styles/newtopimage/public/imageblock/AgBioData-websiteHeader_v2.png?itok=_Z2cIMbc)
-3. [GFF3 recommendation google doc (comment access)](https://docs.google.com/document/d/1yjQ7lozyETeoGkPfSMTAT8IN3ZIAuy5YkbsBdjGeLww/edit#heading=h.vz8hm961nr5b)
+3. [GFF3 recommendation google doc (comment access)](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#)
 4.  [NCBI Genbank genomes gff3 specifications](https://www.ncbi.nlm.nih.gov/sites/genbank/genomes_gff/)
 5.  [NCBI Genbank gff3 documentation](https://www.ncbi.nlm.nih.gov/datasets/docs/about-ncbi-gff3/)
 *****
