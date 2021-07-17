@@ -19,3 +19,13 @@ The AgBioData GFF3 working group has developed recommendations to solve common p
 4.  [NCBI Genbank genomes gff3 specifications](https://www.ncbi.nlm.nih.gov/sites/genbank/genomes_gff/)
 5.  [NCBI Genbank gff3 documentation](https://www.ncbi.nlm.nih.gov/datasets/docs/about-ncbi-gff3/)
 *****
+
+**GFF3 working group goals**
+
+*Ultimate goal* - to use a GFF3 file from any software or any database in downstream processing tools or applications (e.g. VEP, Tripal, Apollo, ...) WITHOUT having to modify it
+
+1.Databases and software export their GFF3 files in (a) standard way(s)
+
+2.Databases and software know how to import standard information from a GFF3
+
+![Goals](https://github.com/NAL-i5K/AgBioData_GFF3_recommendation/blob/a0b7e70577b27d7c2c15451ed90802b3bfb90a6d/docs/Goals.png)
