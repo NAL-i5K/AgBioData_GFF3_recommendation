@@ -29,3 +29,31 @@ The AgBioData GFF3 working group has developed recommendations to solve common p
 2.Databases and software know how to import standard information from a GFF3
 
 ![Goals](https://github.com/NAL-i5K/AgBioData_GFF3_recommendation/blob/a0b7e70577b27d7c2c15451ed90802b3bfb90a6d/docs/Goals.png)
+
+
+*****
+**Recommendations**
+
+For each column and reserved attribute, we provide the following results from our discussions:
+ - Change level: The level of change relative to the SO specification. Values are 'No change', 'Recommendation only','minor', 'moderate', 'major'
+ - Summary: A summary of the GFF3 working group's findings.
+ - Proposed changes to specification: A list of the proposed changes to the SO specification.
+ - Rationale: The rationale behind these changes.
+ - Best Practices: Recommended best practices for this field.
+ - Validation: How software would validate whether the field is used correctly.  
+ - Example: An example implementation of the field. 
+
+Types of changes that we recommend:
+ - No change: 5
+ - *Recommendation only: 9*
+ - Minor: 1
+ - Moderate: 1
+ - Major: 1
+![Summary](https://github.com/NAL-i5K/AgBioData_GFF3_recommendation/blob/087dd3dbda6af8b82125d237e1c6fc25f9938594/docs/Summaryofrecommendations_Jul17.png)
+
+We primarily have recommendations on how to
+ - Interpret the specification
+ - Model standard data types
+
+Recommendation google doc: [https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018)
+Comments are welcome in suggesting mode
