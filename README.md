@@ -49,7 +49,7 @@ Types of changes that we recommend:
  - Minor: 1
  - Moderate: 1
  - Major: 1
-![Summary](https://github.com/NAL-i5K/AgBioData_GFF3_recommendation/blob/087dd3dbda6af8b82125d237e1c6fc25f9938594/docs/Summaryofrecommendations_Jul17.png)
+![Summary](https://github.com/NAL-i5K/AgBioData_GFF3_recommendation/blob/ea21c39f248592cf13731d439e3562c5e4ed7532/docs/Summaryofrecommendations_Jul17.png)
 
 We primarily have recommendations on how to
  - Interpret the specification
