@@ -2,7 +2,7 @@
 
 **Members**
  - AgBioData: Ethalinda Cannon, Andrew Farmer, Zhiliang Hu, Rex Nelson, Monica Poelchau, Surya Saha
- - Alliance of Genome Resources: Scott Cain, Nathan Dunn, Sierra Moxon
+ - Alliance of Genome Resources: Scott Cain, Nathan Dunn, Sierra Moxon, Rob Buels
  - NCBI: Vamsi Kodali, Terence Murphy
 
 
@@ -57,3 +57,9 @@ We primarily have recommendations on how to
 
 Recommendation google doc: [https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018)
 Comments are welcome in suggesting mode
+
+
+*****
+**Acknowledgements**
+
+We thank Margaret Woodhouse for the inspiration for this working group, and many other contributors from the larger research community who have provided feedback on earlier versions
