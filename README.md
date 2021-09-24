@@ -32,7 +32,7 @@ The AgBioData GFF3 working group has developed recommendations to solve common p
 
 
 *****
-**Recommendations**
+**Summary of Recommendations**
 
 For each column and reserved attribute, we provide the following results from our discussions:
  - Change level: The level of change relative to the SO specification. Values are 'No change', 'Recommendation only','minor', 'moderate', 'major'
