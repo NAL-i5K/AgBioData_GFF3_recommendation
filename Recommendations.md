@@ -223,9 +223,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
 1.
 ## attributes (col 9): Derives\_from
 
-  - **Change level:** minor
+  - **Change level:** recommendation
   - **Summary:** The most common use for the Derives\_from attribute is to describe the relationship between CDS and polypeptide features. However, 1) not all software recognizes this relationship, and 2) we do not recommend modeling polypeptide features in GFF3 (see recommendations for &#39;Modeling hierarchical relationships of a protein-coding gene&#39;). Avoid modeling polypeptide features in general to prevent downstream interpretation problems of Derives\_from.
-  - **Proposed changes to specification:** We recommend removing polypeptide features from the protein-coding examples in the specification.
+  - **Proposed changes to specification:** None.
   - **Rationale:** The Derives\_from attribute ([http://purl.obolibrary.org/obo/RO\_0001000](http://purl.obolibrary.org/obo/RO_0001000)) is used in situations where the relationship between features is temporal, and therefore the part\_of relationship implied by the &#39;Parent&#39; attribute is not appropriate (e.g. polypeptides are derived from CDS features, or in the case of polycistronic genes). In practice most programs that consume or create GFF3 do not check whether implied part\_of relationships are actually valid per the Sequence Ontology (a notable exception is Genometools ([http://genometools.org/cgi-bin/gff3validator.cgi](http://genometools.org/cgi-bin/gff3validator.cgi))).
   - **Best practices:** To avoid breaking software that consumes GFF3, we recommend not specifying a polypeptide feature if you&#39;re modeling a typical protein-coding gene based on genomic coordinates (see also recommendations for &#39;Modeling hierarchical relationships of a protein-coding gene&#39; below).
   - **Validation:** This needs more analysis and discussion.
