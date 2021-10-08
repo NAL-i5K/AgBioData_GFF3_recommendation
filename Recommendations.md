@@ -1,48 +1,48 @@
 # AgBioData GFF3 working group recommendations
 
-**[Motivation](#_rkq3z725732m) 1**
+**Motivation**
 
-**[Specific recommendations](#_4qfcbhv4t6ee) 2**
+**Specific recommendations**
 
-[Seqid (column 1)](#_o19aeh241bd9) 3
+Seqid (column 1)
 
-[source (column 2)](#_fnlc5x1z2sc) 3
+source (column 2)
 
-[type (column 3)](#_h12m0pdmcfgy) 4
+type (column 3)
 
-[start, end (column 4,5)](#_g8waxnu40xu6) 5
+start, end (column 4,5)
 
-[score (column 6)](#_iq5thyxw0m5a) 5
+score (column 6)
 
-[Strand (column 7)](#_rdoix2273qpq) 6
+Strand (column 7)
 
-[phase (column 8)](#_y6y6ntpboup3) 6
+phase (column 8)
 
-[attributes (column 9): ID](#_w0j7f373hhgd) 7
+attributes (column 9): ID
 
-[attributes (col 9): Name](#_92520xw56jd9) 8
+attributes (col 9): Name
 
-[attributes (col 9): Alias](#_f2t4251wx30t) 8
+attributes (col 9): Alias
 
-[attributes (col 9): Dbxref](#_6j58ieuynf9j) 9
+attributes (col 9): Dbxref
 
-[attributes (col 9): Derives\_from](#_8n34ugoqdylm) 10
+attributes (col 9): Derives\_from
 
-[attributes (col 9): Note](#_xhc9osjg97l9) 11
+attributes (col 9): Note
 
-[attributes (col 9): Ontology\_term](#_egrw3qdblgfb) 11
+attributes (col 9): Ontology\_term
 
-[attributes (col 9): Target, Gap](#_tvca97qh9eos) 12
+attributes (col 9): Target, Gap
 
-[Attributes \&lt;col 9\&gt;: \&lt;complex metadata\&gt; / functional annotations](#_84jxu843tx44) 13
+Attributes (col 9): Complex metadata and functional annotations
 
-[Modeling hierarchical relationships of a protein-coding gene](#_zgaqr4895c4t) 14
+Modeling hierarchical relationships of a protein-coding gene
 
-[Pragmas](#_e4jq92he3o9z) 15
+Pragmas
 
-[Other caveats and unresolved issues](#_v63z0fbh4ao9) 16
+Other caveats and unresolved issues
 
-[Examples](#_gm1lzp8un56c) 16
+Examples
 
 ## Motivation
 
