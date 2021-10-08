@@ -64,7 +64,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
 - Validation: How software would validate whether the field is used correctly.
 - Example: An example implementation of the field.
 
-1.
+
 ## **Seqid (column 1)**
 
   - **Change Level.** Recommendation only
@@ -77,7 +77,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
     - If the GenBank Alias table is not suitable, then a separate alias table can be provided, where all identifiers in column 1 of the GFF3 file must be uniquely present in column 1 of the alias table. The columns in the alias file should be tab delimited and all lines beginning with a hash (#) will be ignored. There will be NO validation for an alternate alias table.
   - **Example.** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb)
 
-1.
+
 ## source (column 2)
 
   - _ **Change level:** _ no change
@@ -93,7 +93,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
     - The feature should be a well defined output of the tool or database specified. If there is any ambiguity or post-processing, it should be clearly explained in the pragma stanza at the top of the GFF file. See the &#39;pragma&#39; section below.
   - _ **Example.** _[https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.8yzwr29w95mh](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.8yzwr29w95mh)
 
-1.
+
 ## **type (column 3)**
 
   - _ **Change level** _: no change
@@ -107,7 +107,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
     - A list of the SO terms and the hierarchy in OBO format is fetched from [http://song.cvs.sourceforge.net/viewvc/\*checkout\*/song/ontology/sofa.obo](http://song.cvs.sourceforge.net/viewvc/*checkout*/song/ontology/sofa.obo) by default
   - **Example.** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.t94q0hgki4w9](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.t94q0hgki4w9)
 
-1.
+
 ## **start, end (column 4,5)**
 
   - _ **Change level:** _no change
@@ -124,7 +124,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
     - If _&#39;Is\_circular=true_&#39; appears in column 9, _start_ gives the beginning coordinate of the feature and _end_ is start + (feature length - 1). This means the value for _end_ may be larger than the chromosome size
   - _ **Examples** _: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.15ngz7f2sit7](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.15ngz7f2sit7)
 
-1.
+
 ## **score (column 6)**
 
   1. _ **Change level:** _ moderate
@@ -140,7 +140,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
       3. #!score score-name program program-version score-range decreases|increases
   7. _ **Example** _: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.wsrdofcyxnmu](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.wsrdofcyxnmu)
 
-1.
+
 ## Strand (column 7)
 
   - **Change level:** No change.
@@ -150,7 +150,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Validation** : Values should include &#39;+&#39;, &#39;-&#39;, &#39;.&#39;. &#39;?&#39; can be used when the strand is relevant but unknown.
   - **Example** : NA
 
-1.
+
 ## phase (column 8)
 
   - _ **Change level:** _ recommendation only
@@ -167,7 +167,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
     - Pragma specifying translation table: specify exemptions to standard code only [https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C\_DOC/lxr/source/data/gc.prt#0150](https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/gc.prt#0150)
     - Example of incorrect vs. correct phase: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.d9hxh9okm6rg](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.d9hxh9okm6rg)
 
-1.
+
 ## attributes (column 9): ID
 
   - **Change level:** recommendation only
@@ -178,7 +178,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Validation.** ID attribute: only validate whether IDs for each feature are unique within the scope of the GFF file, with the exception of discontinuous features. Persistent identifiers specified via the Dbxref attribute can be validated according to Dbxref rules.
   - **Example**. [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.ajk6obcear0c](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.ajk6obcear0c)
 
-1.
+
 ## attributes (col 9): Name
 
   - **Change level:** recommendation only
@@ -192,7 +192,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Validation:** refer to different community standards. No automated validation currently possible.
   - **Example:** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.or36qtilfraa](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.or36qtilfraa)
 
-1.
+
 ## attributes (col 9): Alias
 
   - **Change level:** Recommendation only
@@ -203,7 +203,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Validation:** Any set of symbols would be appropriate and does not need to be unique. Alias values can not include a semicolon.
   - **Example** : [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.qub8uu7yavbh](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.qub8uu7yavbh)
 
-1.
+
 ## attributes (col 9): Dbxref
 
   - **Change level:** Recommendation only
@@ -220,7 +220,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
 - **Validation:** There may be a challenge when writing the validators, given that there are multiple independently maintained lists, and there may be lags in information updates. The validator could check whether a HTTP response status code 200 is returned based on the url built from the dbxref registry in the directive. Semicolons (&quot;;&quot;) are not permitted in the URL as it&#39;s used as the delimiter between column 9 &quot;name=value&quot; pairs..
 - **Example** : [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.3ylh08mnzm75](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.3ylh08mnzm75)
 
-1.
+
 ## attributes (col 9): Derives\_from
 
   - **Change level:** recommendation
@@ -231,7 +231,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Validation:** This needs more analysis and discussion.
   - **Example:** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.l7o3yeprwedb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.l7o3yeprwedb)
 
-1.
+
 ## attributes (col 9): Note
 
   - **Change level:** No change
@@ -244,7 +244,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
 
 ...;Note=This was a gene split from pax6;Note=Version 6.3a published on Sep 15, 2020
 
-1.
+
 ## attributes (col 9): Ontology\_term
 
   - **Change level:** Recommendation only.
@@ -255,7 +255,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Validation:** Should be a CURIE that resolves into a published ontology term. The validator should issue a warning that Ontology\_term should be avoided.
   - **Example:** Ontology\_term=&quot;GO:0046703&quot; (although note that evidence code should also be included; see discussion on &quot;complex metadata&quot;)
 
-1.
+
 ## attributes (col 9): Target, Gap
 
   - **Change level:** Recommendation only.
@@ -275,7 +275,7 @@ glyma.Wm82.gnm2.ann1.Gm01 DAGchainer syntenic\_region 227021 926129 1243.0 + . *
 
 scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=scaffold\_18G19.1 1 1934 +;Gap=M884 D1 M947 D1 M103**
 
-1.
+
 ## Attributes \&lt;col 9\&gt;: \&lt;complex metadata\&gt; / functional annotations
 
   - **Change level:** Major change
@@ -299,7 +299,7 @@ scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=s
   - \&lt;type\&gt;, \&lt;rank\&gt;, \&lt;key\&gt; should all be lower-case.
 - **Example:** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.h4b9kbtmxne6](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.h4b9kbtmxne6)
 
-1.
+
 ## Modeling hierarchical relationships of a protein-coding gene
 
   - **Change level:** Recommendation only
@@ -324,7 +324,7 @@ scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=s
 - IDs should be internally resolvable.
 - **Example:** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.k29nmx3hdkik](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.k29nmx3hdkik)
 
-1.
+
 ## Pragmas
 
   - **Seqid alias table**
@@ -354,7 +354,7 @@ scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=s
 - **Ontology URIs -** these should use official OBO version IRI PURLs. Should \*never\* encode &quot;cvs&quot; or the like as recommended in the GFF spec.
 - **Species** - don&#39;t use URLs as in the spec, as these can vary. Use an OBO CURIE. E.g. NCBITaxon:9606
 
-1.
+
 ## Other caveats and unresolved issues
 
   - We need recommendations/standards for fasta deflines. See
