@@ -10,7 +10,8 @@ The GFF3 format is a common, flexible tab-delimited format representing the stru
 
 The AgBioData consortium is a group of genomics, genetics and breeding databases and partners working towards shared practices and standards. Providing concrete guidelines for generating GFF3, and creating a standard representation of the most common biological data types would provide a major increase in efficiency for AgBioData databases and the genomics research community that use the GFF3 format in their daily operations.
 
-The AgBioData GFF3 working group has developed recommendations to solve common problems in the GFF3 format. We suggest improvements for each of the GFF3 fields, as well as the special cases of modeling functional annotations, and standard protein-coding genes. We welcome discussion of these recommendations from the larger community.
+The AgBioData GFF3 working group has developed [recommendations](https://github.com/NAL-i5K/AgBioData_GFF3_recommendation/blob/main/Recommendations.md)
+ to solve common problems in the GFF3 format. We suggest improvements for each of the GFF3 fields, as well as the special cases of modeling functional annotations, and standard protein-coding genes. We welcome discussion of these [recommendations](https://github.com/NAL-i5K/AgBioData_GFF3_recommendation/blob/main/Recommendations.md) from the larger community.
  
 **References**
 1.  [Sequence Ontology gff3 specifications](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md)
@@ -32,7 +33,7 @@ The AgBioData GFF3 working group has developed recommendations to solve common p
 
 
 *****
-**Summary of Recommendations**
+**Summary of [Recommendations](https://github.com/NAL-i5K/AgBioData_GFF3_recommendation/blob/main/Recommendations.md)**
 
 For each column and reserved attribute, we provide the following results from our discussions:
  - Change level: The level of change relative to the SO specification. Values are 'No change', 'Recommendation only','minor', 'moderate', 'major'
@@ -55,8 +56,9 @@ We primarily have recommendations on how to
  - Interpret the specification
  - Model standard data types
 
-Recommendation google doc: [https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018)
-Comments are welcome in suggesting mode
+[**Detailed Recommendations**](https://github.com/NAL-i5K/AgBioData_GFF3_recommendation/blob/main/Recommendations.md)
+
+**Feedback**: Please file [issues](https://github.com/NAL-i5K/AgBioData_GFF3_recommendation/issues) and tag the relevant contact person.
 
 
 *****
