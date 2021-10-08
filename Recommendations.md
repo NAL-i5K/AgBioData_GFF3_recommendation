@@ -74,7 +74,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Recommendation**. Optionally provide a machine- and human- readable &#39;alias&#39; table to specify identifiers and their aliases, which is provided by GenBank, and requires INSDC submission of the genome.
   - **Validation.**
     - A pragma line in the GFF3 header should provide a resolvable URL to the GenBank Alias table. Validator should only verify that the link is active.
-    - If the GenBank Alias table is not suitable, then a separate alias table can be provided, where all identifiers in column 1 of the GFF3 file must be uniquely present in column 1 of the alias table. The columns in the alias file should be tab delimited and all lines beginning with a hash (#) will be ignored. There will be NO validation for an alternate alias table.
+    - If the GenBank Alias table is not available, then a separate alias table can be provided, where all identifiers in column 1 of the GFF3 file must be uniquely present in column 1 of the alias table. The columns in the alias file should be tab delimited and all lines beginning with a hash (#) will be ignored. There will be NO validation for an alternate alias table.
   - **Example.** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb)
 
 1.
