@@ -1,58 +1,48 @@
-# AgBioData GFF3 working group recommendations
+AgBioData GFF3 working group recommendations
+==============================================
 
-**Motivation**
 
-**Specific recommendations**
+- [Motivation](#motivation)
+- [Specific recommendations](#specific-recommendations)
 
-Seqid (column 1)
+Maintainer | Github handle or E mail | Column
+---------- | ----------------------- | ------
+Rex | @maxglycine | seqid (column 1)
+Surya | @suryasaha | source (column 2)	
+Vamsi/Terence | @vkkodali | type (column 3)	
+Ethy | ekcannon@iastate.edu | start, end (column 4,5) 	
+Ethy | ekcannon@iastate.edu | score (column 6)	
+Monica | @mpoelchau | phase (column 8)
+Monica | mpoelchau | attributes (column 9): ID	
+Andrew | @adf-ncgr | attributes (col 9): Name	
+Rob | @rbuels | attributes (col 9): Alias	
+Zhiliang| zhu@iastate.edu | attributes (col 9): Dbxref
+NA | NA| attributes (col 9): Derives_from	
+Rob | @rbuels | attributes (col 9): Note
+Rob | @rbuels | attributes (col 9): Ontology_term 
+Rob | @rbuels | attributes (col 9): Target
+Andrew | @adf-ncgr | attributes (col 9): Gap
+Rob | @rbuels | Modeling hierarchical relationships of a protein-coding gene
+Rob/Surya | @rbuels @suryasaha |  Functional annotations
 
-source (column 2)
+Please tag the associated maintainer when you file an issue.
 
-type (column 3)
+- [Pragmas](#pragmas)
+- [Other caveats and unresolved issues](#other-caveats-and-unresolved-issues)
+- [Examples](#examples)
 
-start, end (column 4,5)
+------------------------------------------
 
-score (column 6)
-
-Strand (column 7)
-
-phase (column 8)
-
-attributes (column 9): ID
-
-attributes (col 9): Name
-
-attributes (col 9): Alias
-
-attributes (col 9): Dbxref
-
-attributes (col 9): Derives\_from
-
-attributes (col 9): Note
-
-attributes (col 9): Ontology\_term
-
-attributes (col 9): Target, Gap
-
-Attributes (col 9): Complex metadata and functional annotations
-
-Modeling hierarchical relationships of a protein-coding gene
-
-Pragmas
-
-Other caveats and unresolved issues
-
-Examples
-
-## Motivation
+# Motivation 
 
 The GFF3 format ([https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md)) is a commonly used tab-delimited format representing the structure and function of genes or other mapped features. The format&#39;s flexibility allows scientists to easily manipulate GFF3 files, and it helps accurately represent the complex biological information being captured. However, with increasing re-use of annotation data, in particular from different sources (software output from custom datasets, and/or reference datasets provided by databases), this flexibility has become an obstacle for downstream processing. Common software packages that export annotations in GFF3 format model the same data and metadata in different notations, which puts the burden on end-users to understand possibly undocumented assumptions about the data model, then to convert the data for downstream applications. For example, the CDS phase field is commonly misinterpreted by both dataset generators and consumers, which can lead to vastly different and erroneous amino acid sequences derived from the same GFF3 file.
+
 
 The AgBioData consortium ([https://www.agbiodata.org/](https://www.agbiodata.org/)) is a group of genomics, genetics and breeding databases and partners working towards shared practices and standards. Almost every AgBioData database uses the GFF3 format in some capacity, either for content ingest (into the database or associated tools, such as JBrowse), analysis, distribution, or all of the above. Many AgBioData members report that much of their data wrangling time is spent reformatting and correcting GFF3 files that model the same data types in different ways. Providing concrete guidelines for generating GFF3, and creating a standard representation of the most common biological data types in GFF3 that would be compatible with the most commonly used tools, would provide a major increase in efficiency for all AgBioData databases.
 
 The AgBioData GFF3 working group has developed new recommendations to solve common problems in the GFF3 format. We have referred to and in some cases adopted guidelines developed by the Alliance of Genome Resources ([https://docs.google.com/document/d/1yjQ7lozyETeoGkPfSMTAT8IN3ZIAuy5YkbsBdjGeLww/edit#heading=h.vz8hm961nr5b](https://docs.google.com/document/d/1yjQ7lozyETeoGkPfSMTAT8IN3ZIAuy5YkbsBdjGeLww/edit#heading=h.vz8hm961nr5b)), and NCBI ([https://www.ncbi.nlm.nih.gov/sites/genbank/genomes\_gff/](https://www.ncbi.nlm.nih.gov/sites/genbank/genomes_gff/) and [https://www.ncbi.nlm.nih.gov/datasets/docs/about-ncbi-gff3/](https://www.ncbi.nlm.nih.gov/datasets/docs/about-ncbi-gff3/)). Below, we suggest improvements for each of the GFF3 fields, as well as the special cases of modeling functional annotations, and standard protein-coding genes. We welcome debate and discussion of these recommendations from the larger community - these recommendations will only be helpful if they are refined and then adopted by many. Our goal is to clarify the GFF3 specification and limit ambiguity for AgBioData and other databases and resources.
 
-## Specific recommendations
+# Specific recommendations
 
 We recommend that developers and databases follow the Sequence Ontology specifications ([https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md)) with emphases and additions below. Each field contains information in the following categories:
 
@@ -65,7 +55,7 @@ We recommend that developers and databases follow the Sequence Ontology specific
 - Example: An example implementation of the field.
 
 
-## **Seqid (column 1)**
+## Seqid (column 1)
 
   - **Change Level.** Recommendation only
   - **Summary.** Optionally, provide an Alias table to specify alternate identifiers/aliases for the seqid.
@@ -276,7 +266,7 @@ glyma.Wm82.gnm2.ann1.Gm01 DAGchainer syntenic\_region 227021 926129 1243.0 + . *
 scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=scaffold\_18G19.1 1 1934 +;Gap=M884 D1 M947 D1 M103**
 
 
-## Attributes \&lt;col 9\&gt;: \&lt;complex metadata\&gt; / functional annotations
+## Attributes (col 9) complex metadata / functional annotations
 
   - **Change level:** Major change
   - **Summary:** In some instances we may need to model complex sets of metadata within the GFF3.
@@ -300,7 +290,7 @@ scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=s
 - **Example:** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.h4b9kbtmxne6](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.h4b9kbtmxne6)
 
 
-## Modeling hierarchical relationships of a protein-coding gene
+# Modeling hierarchical relationships of a protein-coding gene
 
   - **Change level:** Recommendation only
   - **Summary:** The primary purpose of GFF3 is to model gene structure.
@@ -325,7 +315,7 @@ scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=s
 - **Example:** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.k29nmx3hdkik](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.k29nmx3hdkik)
 
 
-## Pragmas
+# Pragmas
 
   - **Seqid alias table**
     - Used to cross reference multiple naming schemes for seqid values, for example, to correlate project chromosome names with NCBI accessions. Starts with ##alias-table [columns] and ends with ###. See [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb).
@@ -359,7 +349,7 @@ scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=s
 - **Species** - don&#39;t use URLs as in the spec, as these can vary. Use an OBO CURIE. E.g. NCBITaxon:9606
 
 
-## Other caveats and unresolved issues
+# Other caveats and unresolved issues
 
   - We need recommendations/standards for fasta deflines. See
     - [https://www.ncbi.nlm.nih.gov/Sequin/modifiers.html](https://www.ncbi.nlm.nih.gov/Sequin/modifiers.html)
@@ -374,7 +364,7 @@ scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=s
   - Identify a standard way of linking to resources that contain information related to what is contained in a GFF. The most obvious case would be for allowing explicit associations to fasta files; alignments externally might provide another case
   - Discuss adding pragma with workflow provenance including functional annotation tool (e.g. Prokka), which implies evidence and GO ref. This would get around having a separate GAF file, or using the &#39;complex metadata&#39; format.
 
-## Examples
+# Examples
 
 ##
 
