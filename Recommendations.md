@@ -33,7 +33,8 @@ Please tag the associated maintainer when you file an issue.
 
 ------------------------------------------
 
-# Motivation 
+Motivation 
+==========
 
 The GFF3 format ([https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md)) is a commonly used tab-delimited format representing the structure and function of genes or other mapped features. The format&#39;s flexibility allows scientists to easily manipulate GFF3 files, and it helps accurately represent the complex biological information being captured. However, with increasing re-use of annotation data, in particular from different sources (software output from custom datasets, and/or reference datasets provided by databases), this flexibility has become an obstacle for downstream processing. Common software packages that export annotations in GFF3 format model the same data and metadata in different notations, which puts the burden on end-users to understand possibly undocumented assumptions about the data model, then to convert the data for downstream applications. For example, the CDS phase field is commonly misinterpreted by both dataset generators and consumers, which can lead to vastly different and erroneous amino acid sequences derived from the same GFF3 file.
 
@@ -42,7 +43,8 @@ The AgBioData consortium ([https://www.agbiodata.org/](https://www.agbiodata.org
 
 The AgBioData GFF3 working group has developed new recommendations to solve common problems in the GFF3 format. We have referred to and in some cases adopted guidelines developed by the Alliance of Genome Resources ([https://docs.google.com/document/d/1yjQ7lozyETeoGkPfSMTAT8IN3ZIAuy5YkbsBdjGeLww/edit#heading=h.vz8hm961nr5b](https://docs.google.com/document/d/1yjQ7lozyETeoGkPfSMTAT8IN3ZIAuy5YkbsBdjGeLww/edit#heading=h.vz8hm961nr5b)), and NCBI ([https://www.ncbi.nlm.nih.gov/sites/genbank/genomes\_gff/](https://www.ncbi.nlm.nih.gov/sites/genbank/genomes_gff/) and [https://www.ncbi.nlm.nih.gov/datasets/docs/about-ncbi-gff3/](https://www.ncbi.nlm.nih.gov/datasets/docs/about-ncbi-gff3/)). Below, we suggest improvements for each of the GFF3 fields, as well as the special cases of modeling functional annotations, and standard protein-coding genes. We welcome debate and discussion of these recommendations from the larger community - these recommendations will only be helpful if they are refined and then adopted by many. Our goal is to clarify the GFF3 specification and limit ambiguity for AgBioData and other databases and resources.
 
-# Specific recommendations
+Specific recommendations
+========================
 
 We recommend that developers and databases follow the Sequence Ontology specifications ([https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md)) with emphases and additions below. Each field contains information in the following categories:
 
