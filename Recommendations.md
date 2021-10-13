@@ -351,7 +351,11 @@ scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=s
   - **Format: ##dbxref=\&lt;Namespace:ID,refsrc=URL\&gt;**
   - **Example: ##dbxref=ncbiprotein:CAA71118.1,refsrc= identifiers.org; (which resolves to** **[https://identifiers.org/ncbiprotein:CAA71118.](https://identifiers.org/ncbiprotein:CAA71118.1)[1](https://identifiers.org/ncbiprotein:CAA71118.1)****)**
   - **Addendum: This requires that the database providing the xref register at and obtain a namespace from Identifiers.org.**
-- **Ontology URIs -** these should use official OBO version IRI PURLs. Should \*never\* encode &quot;cvs&quot; or the like as recommended in the GFF spec.
+- **Ontology URIs** 
+  - This pragma is optional.
+  - Format: ## Ontology <URL>
+  - Example: ## Ontology [http://purl.obolibrary.org/obo/so.obo](http://purl.obolibrary.org/obo/so.obo)
+  - The ontology URL should be the official OBO version permanent URL in unencoded format. 
 - **Species** - don&#39;t use URLs as in the spec, as these can vary. Use an OBO CURIE. E.g. NCBITaxon:9606
 
 
