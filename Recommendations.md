@@ -7,21 +7,21 @@ AgBioData GFF3 working group recommendations
 
 Maintainer | Github handle or E mail | Column
 ---------- | ----------------------- | ------
-Rex | @maxglycine | seqid (column 1)
-Surya | @suryasaha | source (column 2)	
-Vamsi/Terence | @vkkodali | type (column 3)	
-Ethy | ekcannon@iastate.edu | start, end (column 4,5) 	
-Ethy | ekcannon@iastate.edu | score (column 6)	
-Monica | @mpoelchau | phase (column 8)
-Monica | mpoelchau | attributes (column 9): ID	
-Andrew | @adf-ncgr | attributes (col 9): Name	
-Rob | @rbuels | attributes (col 9): Alias	
-Zhiliang| zhu@iastate.edu | attributes (col 9): Dbxref
-NA | NA| attributes (col 9): Derives_from	
-Rob | @rbuels | attributes (col 9): Note
-Rob | @rbuels | attributes (col 9): Ontology_term 
-Rob | @rbuels | attributes (col 9): Target
-Andrew | @adf-ncgr | attributes (col 9): Gap
+Rex | @maxglycine | [seqid](#seqid) (column 1)
+Surya | @suryasaha | [source](#source) (column 2)	
+Vamsi/Terence | @vkkodali | [type](#type) (column 3)	
+Ethy | ekcannon@iastate.edu | [start, end](#start,-end) (column 4,5) 	
+Ethy | ekcannon@iastate.edu | [score](#score) (column 6)	
+Monica | @mpoelchau | [phase](#phase) (column 8)
+Monica | mpoelchau | [attributes : ID](#attributes-:-ID)	(column 9)
+Andrew | @adf-ncgr | [attributes : Name](#attributes-:-Name)	(column 9)
+Rob | @rbuels | attributes (col 9): Alias	(column 9)
+Zhiliang| zhu@iastate.edu | attributes (col 9): Dbxref (column 9) 
+NA | NA| attributes : Derives_from	(column 9)
+Rob | @rbuels | attributes : Note (column 9) 
+Rob | @rbuels | attributes : Ontology_term (column 9) 
+Rob | @rbuels | attributes : Target (column 9) 
+Andrew | @adf-ncgr | attributes : Gap (column 9) 
 Rob | @rbuels | Modeling hierarchical relationships of a protein-coding gene
 Rob/Surya | @rbuels @suryasaha |  Functional annotations
 
@@ -57,8 +57,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
 - Example: An example implementation of the field.
 
 
-## Seqid (column 1)
-
+Seqid 
+=====
+**Column 1**
   - **Change Level.** Recommendation only
   - **Summary.** Optionally, provide an Alias table to specify alternate identifiers/aliases for the seqid.
   - **Proposed Changes to Specifications**. Institute a new pragma for alias table link.
@@ -70,7 +71,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Example.** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb)
 
 
-## source (column 2)
+Source
+======
+**Column 2**
 
   - _ **Change level:** _ no change
   - _ **Summary** _: There are no major changes from the previous SO specification. We recommend that the source field is used to define the source of the sequence feature concisely. Source is used to extend the feature ontology by adding a qualifier to the type field.
@@ -86,8 +89,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - _ **Example.** _[https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.8yzwr29w95mh](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.8yzwr29w95mh)
 
 
-## **type (column 3)**
-
+Type
+====
+**Column 3**
   - _ **Change level** _: no change
   - _ **Summary** _ **:** We endorse the Alliance recommendations for the &#39;type&#39; field when modeling hierarchical gene features. This aligns with the SO specification that expects this to be &quot;either a term from the Sequence Ontology or an SO accession number&quot;.
   - _ **Proposed changes to specification** _: none
@@ -100,8 +104,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Example.** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.t94q0hgki4w9](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.t94q0hgki4w9)
 
 
-## **start, end (column 4,5)**
-
+Start, End
+==========
+**Column 4,5**
   - _ **Change level:** _no change
   - _ **Summary** _: No changes from the SO specification.
   - _ **Proposed changes to specification:** _ none
@@ -117,7 +122,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - _ **Examples** _: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.15ngz7f2sit7](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.15ngz7f2sit7)
 
 
-## **score (column 6)**
+Score
+=====
+**Column 6**
 
   1. _ **Change level:** _ moderate
   2. _ **Summary** _: There is no clear guidance on how to interpret the score column. Therefore, define how the score was calculated in a pragma.
@@ -133,7 +140,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
   7. _ **Example** _: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.wsrdofcyxnmu](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.wsrdofcyxnmu)
 
 
-## Strand (column 7)
+Strand
+======
+**column 7**
 
   - **Change level:** No change.
   - **Summary:** No change from the original specification.
@@ -143,8 +152,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Example** : NA
 
 
-## phase (column 8)
-
+Phase
+=====
+**Column 8**
   - _ **Change level:** _ recommendation only
   - _ **Summary** _: Programs generating and consuming gff3 should pay close attention to the phase field and validate it, as phase is often incorrect.
   - _ **Proposed changes to specification:** _ none
@@ -160,8 +170,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
     - Example of incorrect vs. correct phase: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.d9hxh9okm6rg](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.d9hxh9okm6rg)
 
 
-## attributes (column 9): ID
-
+Attributes : ID
+===============
+**Column 9**
   - **Change level:** recommendation only
   - **Summary.** The ID attribute&#39;s role is to specify relationships between parent and child features within the GFF3. However, it is often - but not always - also used to specify a globally unique, persistent identifier. This second interpretation causes many problems with downstream software and validators. We recommend NOT using the ID attribute to specify the globally unique, persistent identifier, but instead using a separate attribute, such as Dbxref or gene\_id.
   - **Proposed changes to specification:** Recommend additional attributes (reserved or non-reserved) to specify the globally unique, persistent identifier
@@ -171,8 +182,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Example**. [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.ajk6obcear0c](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.ajk6obcear0c)
 
 
-## attributes (col 9): Name
-
+Attributes : Name
+=================
+**Column 9**
   - **Change level:** recommendation only
   - **Summary:** A designation for the given feature used for display.
   - **Proposed changes to specification** : None
@@ -196,8 +208,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Example** : [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.qub8uu7yavbh](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.qub8uu7yavbh)
 
 
-## attributes (col 9): Dbxref
-
+Attributes : Dbxref
+===================
+**Column 9**
   - **Change level:** Recommendation only
   - **Summary:** 1) Use the Dbxref field to cross-reference the _same_ entity at a database - the field is sometimes mis-interpreted to reference related information, but not the same entity. 2) The Dbxref should result in a resolvable URL.
   - **Proposed changes to specification:** Recommend use of the field for global entity references and crosslinks between databases.
@@ -213,8 +226,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
 - **Example** : [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.3ylh08mnzm75](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.3ylh08mnzm75)
 
 
-## attributes (col 9): Derives\_from
-
+Attributes : Derives\_from
+==========================
+**Column 9**
   - **Change level:** recommendation
   - **Summary:** The most common use for the Derives\_from attribute is to describe the relationship between CDS and polypeptide features. However, 1) not all software recognizes this relationship, and 2) we do not recommend modeling polypeptide features in GFF3 (see recommendations for &#39;Modeling hierarchical relationships of a protein-coding gene&#39;). Avoid modeling polypeptide features in general to prevent downstream interpretation problems of Derives\_from.
   - **Proposed changes to specification:** None.
@@ -224,8 +238,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Example:** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.l7o3yeprwedb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.l7o3yeprwedb)
 
 
-## attributes (col 9): Note
-
+Attributes : Note
+=================
+**Column 9**
   - **Change level:** No change
   - **Summary:** No changes relative to the original definition.
   - **Proposed changes to specification** : None
@@ -237,8 +252,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
 ...;Note=This was a gene split from pax6;Note=Version 6.3a published on Sep 15, 2020
 
 
-## attributes (col 9): Ontology\_term
-
+Attributes : Ontology\_term
+===========================
+**Column 9**
   - **Change level:** Recommendation only.
   - **Summary:** Avoid.
   - **Proposed changes to specification** : None
@@ -248,8 +264,9 @@ We recommend that developers and databases follow the Sequence Ontology specific
   - **Example:** Ontology\_term=&quot;GO:0046703&quot; (although note that evidence code should also be included; see discussion on &quot;complex metadata&quot;)
 
 
-## attributes (col 9): Target, Gap
-
+Attributes : Target, Gap
+========================
+**Column 9**
   - **Change level:** Recommendation only.
   - **Summary:** Target is an attribute intended to encode a parseable relationship between a region on the sequence given in column 1 and a region on another sequence, possibly (but not necessarily) another sequence referenced in column 1 of another record in the same gff file. Gap is an associated attribute encoding the alignment (i.e. gapping structure) needed to put the elements of the two sequences into homologous correspondence.
   - **Proposed changes to specification** : None
@@ -268,8 +285,9 @@ glyma.Wm82.gnm2.ann1.Gm01 DAGchainer syntenic\_region 227021 926129 1243.0 + . *
 scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=scaffold\_18G19.1 1 1934 +;Gap=M884 D1 M947 D1 M103**
 
 
-## Attributes (col 9) complex metadata / functional annotations
-
+Attributes complex metadata / functional annotations
+====================================================
+**Column 9**
   - **Change level:** Major change
   - **Summary:** In some instances we may need to model complex sets of metadata within the GFF3.
   - **Proposed changes to specification:**
@@ -317,7 +335,8 @@ scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=s
 - **Example:** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.k29nmx3hdkik](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.k29nmx3hdkik)
 
 
-# Pragmas
+Pragmas
+=======
 
   - **Seqid alias table**
     - Used to cross reference multiple naming schemes for seqid values, for example, to correlate project chromosome names with NCBI accessions. Starts with ##alias-table [columns] and ends with ###. See [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb).
@@ -366,9 +385,9 @@ scaffold\_44 blastn match\_part 36730 38665 1758 - . ID=33;Parent=32; **Target=s
   - Identify a standard way of linking to resources that contain information related to what is contained in a GFF. The most obvious case would be for allowing explicit associations to fasta files; alignments externally might provide another case
   - Discuss adding pragma with workflow provenance including functional annotation tool (e.g. Prokka), which implies evidence and GO ref. This would get around having a separate GAF file, or using the &#39;complex metadata&#39; format.
 
-# Examples
+Examples
+========
 
-##
 
 
 **Seqid (Column 1)**
