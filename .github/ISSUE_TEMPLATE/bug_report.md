@@ -1,6 +1,7 @@
 ---
 name: Bug report
 title: ''
+about: 'Problem with the specification'
 GFF3 column name: ''
 labels: ''
 assignees: ''
