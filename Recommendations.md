@@ -36,7 +36,7 @@ Please tag the associated maintainer when you file an issue.
 Motivation 
 ==========
 
-The [GFF3](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md)format  is a commonly used tab-delimited format representing the structure and function of genes or other mapped features. The format&#39;s flexibility allows scientists to easily manipulate GFF3 files, and it helps accurately represent the complex biological information being captured. However, with increasing re-use of annotation data, in particular from different sources (software output from custom datasets, and/or reference datasets provided by databases), this flexibility has become an obstacle for downstream processing. Common software packages that export annotations in GFF3 format model the same data and metadata in different notations, which puts the burden on end-users to understand possibly undocumented assumptions about the data model, then to convert the data for downstream applications. For example, the CDS phase field is commonly misinterpreted by both dataset generators and consumers, which can lead to vastly different and erroneous amino acid sequences derived from the same GFF3 file.
+The [GFF3](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md) format  is a commonly used tab-delimited format representing the structure and function of genes or other mapped features. The format's flexibility allows scientists to easily manipulate GFF3 files, and it helps accurately represent the complex biological information being captured. However, with increasing re-use of annotation data, in particular from different sources (software output from custom datasets, and/or reference datasets provided by databases), this flexibility has become an obstacle for downstream processing. Common software packages that export annotations in GFF3 format model the same data and metadata in different notations, which puts the burden on end-users to understand possibly undocumented assumptions about the data model, then to convert the data for downstream applications. For example, the CDS phase field is commonly misinterpreted by both dataset generators and consumers, which can lead to vastly different and erroneous amino acid sequences derived from the same GFF3 file.
 
 
 The [AgBioData consortium](https://www.agbiodata.org/) is a group of genomics, genetics and breeding databases and partners working towards shared practices and standards. Almost every AgBioData database uses the GFF3 format in some capacity, either for content ingest (into the database or associated tools, such as JBrowse), analysis, distribution, or all of the above. Many AgBioData members report that much of their data wrangling time is spent reformatting and correcting GFF3 files that model the same data types in different ways. Providing concrete guidelines for generating GFF3, and creating a standard representation of the most common biological data types in GFF3 that would be compatible with the most commonly used tools, would provide a major increase in efficiency for all AgBioData databases.
@@ -60,48 +60,48 @@ We recommend that developers and databases follow the Sequence Ontology specific
 Seqid 
 =====
 **Column 1**
-  - **Change Level.** Recommendation only
-  - **Summary.** Optionally, provide an Alias table to specify alternate identifiers/aliases for the seqid.
-  - **Proposed Changes to Specifications**. Institute a new pragma for alias table link.
-  - **Rationale.** Sequences often have aliases (multiple identifiers, human-readable names that are not globally unique), and users prefer human-readable display names when viewing sequences in browsers.
-  - **Recommendation**. Optionally provide a machine- and human- readable &#39;alias&#39; table to specify identifiers and their aliases, which is provided by GenBank, and requires INSDC submission of the genome.
-  - **Validation.**
+  - **Change Level**: Recommendation only
+  - **Summary**: Optionally, provide an Alias table to specify alternate identifiers/aliases for the seqid.
+  - **Proposed Changes to Specifications**: Institute a new pragma for alias table link.
+  - **Rationale**: Sequences often have aliases (multiple identifiers, human-readable names that are not globally unique), and users prefer human-readable display names when viewing sequences in browsers.
+  - **Recommendation**: Optionally provide a machine- and human- readable &#39;alias&#39; table to specify identifiers and their aliases, which is provided by GenBank, and requires INSDC submission of the genome.
+  - **Validation**
     - A pragma line in the GFF3 header should provide a resolvable URL to the GenBank Alias table. Validator should only verify that the link is active.
     - If the GenBank Alias table is not available, then a separate alias table can be provided, where all identifiers in column 1 of the GFF3 file must be uniquely present in column 1 of the alias table. The columns in the alias file should be tab delimited and all lines beginning with a hash (#) will be ignored. There will be NO validation for an alternate alias table.
-  - **Example.** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb)
+  - **Example** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb)
 
 
 Source
 ======
 **Column 2**
 
-  - _ **Change level:** _ no change
-  - _ **Summary** _: There are no major changes from the previous SO specification. We recommend that the source field is used to define the source of the sequence feature concisely. Source is used to extend the feature ontology by adding a qualifier to the type field.
-  - _ **Proposed changes to specification:** _ none
-  - _ **Rationale** _: The values used for this field vary widely as it&#39;s a free text field which can lead to parsing and interpretation issues for downstream software and data loading.
-  - _ **Best Practices** _: We recommend that programs generating and consuming GFF3 follow the constraints outlined below and account for the fact that the feature can be a result of multiple tools in a pipeline.
-  - _ **Validation** _
-    - It is not necessary to specify a source. If there is no source, put a &quot;.&quot; (a period) in this field.
-    - Note that only spaces are allowed to represent whitespace. In general, follow the formatting requirements of the specification. From the GFF3 specification: &quot;Literal use of tab, newline, carriage return, the percent (%) sign, and control characters must be encoded using [RFC 3986 Percent-Encoding](https://tools.ietf.org/html/rfc3986#section-2.1); no other characters may be encoded.&quot;
-    - If there are multiple sources, use a literal comma to separate them (NOT %2C). Source names should not include literal commas.
+  - **Change level:** no change
+  - **Summary**: There are no major changes from the previous SO specification. We recommend that the source field is used to define the source of the sequence feature concisely. Source is used to extend the feature ontology by adding a qualifier to the type field.
+  - **Proposed changes to specification:** none
+  - **Rationale**: The values used for this field vary widely as it's a free text field which can lead to parsing and interpretation issues for downstream software and data loading.
+  - **Best Practices**: We recommend that programs generating and consuming GFF3 follow the constraints outlined below and account for the fact that the feature can be a result of multiple tools in a pipeline.
+  - **Validation**
+    - It is not necessary to specify a source. If there is no source, put a `.` (a period) in this field.
+    - Note that only spaces are allowed to represent whitespace. In general, follow the formatting requirements of the specification. From the GFF3 specification: "Literal use of tab, newline, carriage return, the percent (%) sign, and control characters must be encoded using [RFC 3986 Percent-Encoding](https://tools.ietf.org/html/rfc3986#section-2.1); no other characters may be encoded."
+    - If there are multiple sources, use a literal comma to separate them (NOT `%2C`). Source names should not include literal commas.
     - Specify the tool, method or pipeline used to generate this annotation or the database it was acquired from. Mention the version number if available.
-    - The feature should be a well defined output of the tool or database specified. If there is any ambiguity or post-processing, it should be clearly explained in the pragma stanza at the top of the GFF file. See the &#39;pragma&#39; section below.
-  - _ **Example.** _[https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.8yzwr29w95mh](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.8yzwr29w95mh)
+    - The feature should be a well defined output of the tool or database specified. If there is any ambiguity or post-processing, it should be clearly explained in the pragma stanza at the top of the GFF file. See the [pragma](#pragmas) section below.
+  - **Example** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.8yzwr29w95mh](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.8yzwr29w95mh)
 
 
 Type
 ====
 **Column 3**
-  - _ **Change level** _: no change
-  - _ **Summary** _ **:** We endorse the Alliance recommendations for the &#39;type&#39; field when modeling hierarchical gene features. This aligns with the SO specification that expects this to be &quot;either a term from the Sequence Ontology or an SO accession number&quot;.
-  - _ **Proposed changes to specification** _: none
-  - _ **Rationale** _ **:** Software interpreting the type column can run into difficulties with complex cases. Software is easier to develop and maintain if we can make some simplifying assumptions about how genes are typically modeled. Using simple terms will additionally improve human readability and interpretation.
-  - _ **Best practice** _ **:** Top-level feature types can include &#39;gene&#39; and &#39;pseudogene&#39;. Optionally include a so\_term\_name attribute in column 9 to specify the child (type) of gene - e.g. protein\_coding\_gene, ncRNA\_gene, miRNA\_gene and snoRNA\_gene ([http://purl.obolibrary.org/obo/SO\_0000704](http://purl.obolibrary.org/obo/SO_0000704)). Transcript features should include the appropriate SO term in column 3 (e.g. mRNA, snoRNA, etc).
-  - _ **Validation** _ **:**
+  - **Change level**: no change
+  - **Summary**: We endorse the Alliance recommendations for the `type` field when modeling hierarchical gene features. This aligns with the SO specification that expects this to be "either a term from the Sequence Ontology or an SO accession number."
+  - **Proposed changes to specification**: none
+  - **Rationale**: Software interpreting the type column can run into difficulties with complex cases. Software is easier to develop and maintain if we can make some simplifying assumptions about how genes are typically modeled. Using simple terms will additionally improve human readability and interpretation.
+  - **Best practice**: Top-level feature types can include `gene` and `pseudogene`. Optionally, include a `so_term_name` attribute in column 9 to specify the child (type) of `gene` - e.g. `protein_coding_gene`, `ncRNA_gene`, `miRNA_gene` and `snoRNA_gene` ([http://purl.obolibrary.org/obo/SO\_0000704](http://purl.obolibrary.org/obo/SO_0000704)). Transcript features should include the appropriate SO term in column 3 (e.g. `mRNA`, `snoRNA`, etc).
+  - **Validation**
     - Must be a valid SO term or SO accession number
     - All child rows should use a type within the hierarchy of the parent
     - A list of the SO terms and the hierarchy in OBO format is fetched from [http://song.cvs.sourceforge.net/viewvc/\*checkout\*/song/ontology/sofa.obo](http://song.cvs.sourceforge.net/viewvc/*checkout*/song/ontology/sofa.obo) by default
-  - **Example.** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.t94q0hgki4w9](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.t94q0hgki4w9)
+  - **Example** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.t94q0hgki4w9](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.t94q0hgki4w9)
 
 
 Start, End
