@@ -126,30 +126,28 @@ Score
 =====
 **Column 6**
 
-  1. _ **Change level:** _ moderate
-  2. _ **Summary** _: There is no clear guidance on how to interpret the score column. Therefore, define how the score was calculated in a pragma.
-  3. _ **Proposed changes to specification:** _ Define score calculation via pragma.
-  4. _ **Rationale** _: There is currently no standard for providing metadata or context for the score column, rendering the score essentially meaningless.
-  5. _ **Best practice** _: Define how the score was calculated in a pragma. May have multiple parts, such as score name, program, version, range, and whether quality increases or decreases or is constant with increasing values. Use EDAM ontology (https://edamontology.org) where possible. The score itself must be a floating point number. This recommendation considers the score column only when representing gene models. See [Pragmas section](#_e4jq92he3o9z) for more information.
-  6. _ **Validation** _:
-    1. A period indicates no score.
-    2. If any record has a value in the score column:
-      1. It must be a floating point number
-      2. There must be a #!score pragma in the following format:
-      3. #!score score-name program program-version score-range decreases|increases
-  7. _ **Example** _: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.wsrdofcyxnmu](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.wsrdofcyxnmu)
+  - **Change level**: moderate
+  - **Summary**: There is no clear guidance on how to interpret the score column. Therefore, define how the score was calculated in a pragma.
+  - **Proposed changes to specification**: Define score calculation via pragma.
+  - **Rationale**: There is currently no standard for providing metadata or context for the score column, rendering the score essentially meaningless.
+  - **Best practice**: Define how the score was calculated in a pragma. May have multiple parts, such as score name, program, version, range, and whether quality increases or decreases or is constant with increasing values. Use [EDAM ontology](https://edamontology.org) where possible. The score itself must be a floating point number. This recommendation considers the score column only when representing gene models. See [Pragmas section](#pragmas) for more information.
+  - **Validation**
+    - A period indicates no score.
+    - If any record has a value in the score column:
+      - It must be a floating point number
+      - There must be a `#!score` pragma in the following format: `#!score score-name program program-version score-range decreases|increases`
+  - **Example**: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.wsrdofcyxnmu](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.wsrdofcyxnmu)
 
 
 Strand
 ======
 **column 7**
-
-  - **Change level:** No change.
-  - **Summary:** No change from the original specification.
-  - **Rationale** : NA
-  - **Best practices:** Follow the original specification.
-  - **Validation** : Values should include &#39;+&#39;, &#39;-&#39;, &#39;.&#39;. &#39;?&#39; can be used when the strand is relevant but unknown.
-  - **Example** : NA
+  - **Change level**: No change.
+  - **Summary**: No change from the original specification.
+  - **Rationale**: NA
+  - **Best practices**: Follow the original specification.
+  - **Validation**: Values should include `+`, `-` or `.`. A `?` can be used when the strand is relevant but unknown.
+  - **Example**: NA
 
 
 Phase
