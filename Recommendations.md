@@ -107,19 +107,19 @@ Type
 Start, End
 ==========
 **Column 4,5**
-  - _ **Change level:** _no change
-  - _ **Summary** _: No changes from the SO specification.
-  - _ **Proposed changes to specification:** _ none
-  - _ **Rationale** _: Consistent use of _start_ and _end_ coordinates are essential.
-  - _ **Best practice** _: We recommend that programs generating and consuming GFF3 be aware of the existence of circular chromosomes, which will require alternate interpretation of the end coordinates.
-  - _ **Validation** _:
-    - _start_ and _end_ are 1-based coordinates.
-    - _start_ must always be less than or equal to _end_.
-    - A feature with no length, for example, an insertion site, is indicated by _start = end_. The insertion site is to the right of the position. There is no recommendation for representing an insertion at the beginning, that is, before the first base as 0 is an invalid coordinate.
-    - A feature that is one base in length, e.g., a SNP, is also indicated by start = end. Distinguishing between one-base and zero-length features will have to rely on other fields, such as the type field.
-    - In the absence of the _&#39;Is\_circular=true_&#39; attribute in column 9, _end_ indicates the terminal coordinate of the feature.
-    - If _&#39;Is\_circular=true_&#39; appears in column 9, _start_ gives the beginning coordinate of the feature and _end_ is start + (feature length - 1). This means the value for _end_ may be larger than the chromosome size
-  - _ **Examples** _: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.15ngz7f2sit7](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.15ngz7f2sit7)
+  - **Change level**: no change
+  - **Summary**: No changes from the SO specification.
+  - **Proposed changes to specification**: none
+  - **Rationale**: Consistent use of `start` and `end` coordinates are essential.
+  - **Best practice**: We recommend that programs generating and consuming GFF3 be aware of the existence of circular chromosomes, which will require alternate interpretation of the end coordinates.
+  - **Validation**:
+    - `start` and `end` are 1-based coordinates.
+    - `start` must always be less than or equal to `end`.
+    - A feature with no length, for example, an insertion site, is indicated by `start = end`. The insertion site is to the right of the position. There is no recommendation for representing an insertion at the beginning, that is, before the first base as 0 is an invalid coordinate.
+    - A feature that is one base in length, e.g., a SNP, is also indicated by `start = end`. Distinguishing between one-base and zero-length features will have to rely on other fields, such as the type field.
+    - In the absence of the `Is_circular=true` attribute in column 9, `end` indicates the terminal coordinate of the feature.
+    - If `Is_circular=true` appears in column 9, `start` gives the beginning coordinate of the feature and `end` is `start + (feature length - 1)`. This means the value for `end` may be larger than the chromosome size.
+  - **Examples**: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.15ngz7f2sit7](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.15ngz7f2sit7)
 
 
 Score
