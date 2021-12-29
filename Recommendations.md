@@ -305,14 +305,14 @@ Attributes complex metadata / functional annotations
     - These use of GO term or functional annotations should never be incorporated into gff within the Dbxref or Ontology\_term fields. Another file format should be used, e.g. GAF or GPAD, if possible, otherwise modeling using <complex metadata> is recommended.
     - Also, GO terms should be updated annually - you might not want to include this as &#39;static&#39; information.
     - In the context where metadata such as functional annotations must be included in GFF3 column 9, the general format we would suggest and has been adopted in Apollo and Artemis for GO (go\_annotations), Gene Product (gene\_product), and Provenance (provenance) annotations is <type>=<type annotation>; **.** Each type is only included once, but can include multiple type annotations. Note that <type annotation> is URL encoded **.**
-    - <type_annotations> are URL encoded and of the format: rank=<rankA>;<key1>=<value1A>;<key2>=<value2A>,rank=<rankB>;<key1>=<value1B>;<key2>=<value2B>; If we have multiple annotations, we provide a rank to indicate which would go first, though this may not always be relevant. Multiple annotations are comma-delimited. Multiple key/value pairs are semicolon delimited.
+    - <type_annotations> are URL encoded and of the format: rank=\<rankA\>;\<key\>=\<value1A\>;\<key2\>=\<value2A\>,rank=\<rankB\>;\<key1\>=\<value1B\>;\<key2\>=\<value2B\>; If we have multiple annotations, we provide a rank to indicate which would go first, though this may not always be relevant. Multiple annotations are comma-delimited. Multiple key/value pairs are semicolon delimited.
 - **Validation:**
-  - <type> should be lower-case and be of the form <type1>=<type1 annotations>;<type2>=<type2 annotations>; etc.
-  - <type annotation> entries are URL encoded
-  - A <type> can have multiple <type annotations>, which are separated by a comma (url-encoded %3B).
-  - Each <type annotation> has multiple key-value pairs, separated by a semi-colon (url-encoded as %2C).
-  - <rank> is not necessary, but it is preferred if more than one annotation for a type exists.
-  - <type>, <rank>, <key> should all be lower-case.
+  - \<type\> should be lower-case and be of the form \<type1\>=\<type1 annotations\>;\<type2\>=\<type2 annotations\>; etc.
+  - \<type annotation\> entries are URL encoded
+  - A \<type\> can have multiple \<type annotations\>, which are separated by a comma (url-encoded %3B).
+  - Each \<type annotation\> has multiple key-value pairs, separated by a semi-colon (url-encoded as %2C).
+  - \<rank\> is not necessary, but it is preferred if more than one annotation for a type exists.
+  - \<type\>, \<rank\>, \<key\> should all be lower-case.
 - **Example:** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.h4b9kbtmxne6](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.h4b9kbtmxne6)
 
 
