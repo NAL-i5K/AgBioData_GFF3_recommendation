@@ -380,8 +380,10 @@ Examples
 **Seqid pragma (Column 1)**
 
 Example of an alias table pragma for an NCBI alias table:
-    ##alias-table https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/005/GCF_000005005.2_B73_RefGen_v4/GCF_000005005.2_B73_RefGen_v4_assembly_report.txt
-
+```
+##alias-table https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/005/GCF_000005005.2_B73_RefGen_v4/GCF_000005005.2_B73_RefGen_v4_assembly_report.txt
+```
+  
 Example of a custom alias table pragma: 
 ##alias-table Sequence-name Refseq-accession
 chr1	NC_024459.2
