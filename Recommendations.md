@@ -66,8 +66,8 @@ Seqid
   - **Rationale**: Sequences often have aliases (multiple identifiers, human-readable names that are not globally unique), and users prefer human-readable display names when viewing sequences in browsers.
   - **Recommendation**: Optionally provide a machine- and human- readable &#39;alias&#39; table to specify identifiers and their aliases, which is provided by GenBank, and requires INSDC submission of the genome.
   - **Validation**
-    - A pragma line in the GFF3 header should provide a resolvable URL to the GenBank Alias table. Validator should only verify that the link is active.
-    - If the GenBank Alias table is not available, then a separate alias table can be provided. The file should begin with a metadata section denoted by lines beginning with a hash (#). This section should indicate the genus, species, individual/strain/cultivar name that was sequenced.  The section should also contain the genome build and annotation identifier for the sequences. After the metadata section should be the alias table where all identifiers in column 1 of the GFF3 file must be uniquely present in column 1 of the alias table. The columns in the alias table should be tab delimited. There will be NO validation for an alternate alias table.
+    - A pragma line in the GFF3 header, beginning with ##alias-table, should provide a resolvable URL to the GenBank Alias table Validator should only verify that the link is active.
+    - If the GenBank Alias table is not available, then a separate alias table can be provided. A pragma line, ##alias-table [columns] indicates where the table begins, and the definitions of the columns provided. All identifiers in column 1 of the GFF3 file must be uniquely present in column 1 of the alias table. The columns in the alias table should be tab delimited. There will be no validation for an alternate alias table.
   - **Example** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb)
 
 
@@ -79,7 +79,9 @@ Source
   - **Summary**: There are no major changes from the previous SO specification. We recommend that the source field is used to define the source of the sequence feature concisely. Source is used to extend the feature ontology by adding a qualifier to the type field.
   - **Proposed changes to specification:** none
   - **Rationale**: The values used for this field vary widely as it's a free text field which can lead to parsing and interpretation issues for downstream software and data loading.
-  - **Best Practices**: We recommend that programs generating and consuming GFF3 follow the constraints outlined below and account for the fact that the feature can be a result of multiple tools in a pipeline.
+  - **Best Practices**: 
+    - We recommend that programs generating and consuming GFF3 follow the constraints outlined below and account for the fact that the feature can be a result of multiple tools in a pipeline.
+    - Optionally, a pragma can specify the source. We recommend following the VCF specification for Info/ID: https://samtools.github.io/hts-specs/VCFv4.3.pdf. We discourage verbose use of this pragma.
   - **Validation**
     - It is not necessary to specify a source. If there is no source, put a `.` (a period) in this field.
     - Note that only spaces are allowed to represent whitespace. In general, follow the formatting requirements of the specification. From the GFF3 specification: "Literal use of tab, newline, carriage return, the percent (%) sign, and control characters must be encoded using [RFC 3986 Percent-Encoding](https://tools.ietf.org/html/rfc3986#section-2.1); no other characters may be encoded."
@@ -130,12 +132,12 @@ Score
   - **Summary**: There is no clear guidance on how to interpret the score column. Therefore, define how the score was calculated in a pragma.
   - **Proposed changes to specification**: Define score calculation via pragma.
   - **Rationale**: There is currently no standard for providing metadata or context for the score column, rendering the score essentially meaningless.
-  - **Best practice**: Define how the score was calculated in a pragma. May have multiple parts, such as score name, program, version, range, and whether quality increases or decreases or is constant with increasing values. Use [EDAM ontology](https://edamontology.org) where possible. The score itself must be a floating point number. This recommendation considers the score column only when representing gene models. See [Pragmas section](#pragmas) for more information.
+  - **Best practice**:  Optionally, define how the score was calculated in a pragma. May have multiple parts, such as score name, program, version, range, and whether quality increases or decreases or is constant with increasing values. Use [EDAM ontology](https://edamontology.org) where possible. The score itself must be a floating point number. This recommendation considers the score column only when representing gene models. See [Pragmas section](#pragmas) for more information.
   - **Validation**
     - A period indicates no score.
     - If any record has a value in the score column:
       - It must be a floating point number
-      - There must be a `#!score` pragma in the following format: `#!score score-name program program-version score-range decreases|increases`
+      - Optionally, there is a ##score pragma in the following format: ##Score name="[name/calculated-by]";min=[min-value]; max=[max-val];best=[lower/higher]
   - **Example**: [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.wsrdofcyxnmu](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.wsrdofcyxnmu)
 
 
@@ -160,7 +162,9 @@ Phase
     1. Phase is often ignored or misinterpreted, both by programs generating gff3 and programs that consume it. When recorded manually, phase is often incorrect. This is problematic for programs that calculate the CDS and protein sequence using the combination of CDS coordinates and phase. Other methods that are frequently used to calculate the CDS and protein sequence (e.g. longest ORF, identifying start and stop codons) make critical assumptions that can also generate incorrect sequence, in particular for fragmented genomes where gene models may not have start and/or stop codons. 
     2. Even if the phase is correct, a translation table is required to correctly calculate the protein sequence, and there may be multiple translation tables needed for a given gff3, for example when both nuclear and organellar sequence is represented. 
     3. Even when the phase and translation tables are correct, the correct sequence may not be inferred due to post-translational modifications (e.g. selenocysteines) or problematic reference genome assemblies. NCBI represents these edge cases via the `transl_except` attribute.
-  - **Best practices**: We recommend that programs generating and consuming gff3 pay close attention to this value and validate it; however, validation may still fail in complex cases. Phase may be an example where the GFF3 format has reached its limit. In cases where the correct sequence may not be inferred due to post-translational modifications (e.g. selenocysteines) or problematic reference genome assemblies, use the `transl_except` convention developed by NCBI on the CDS feature: `transl_except=(pos:<base_range>%2Caa:<amino_acid>)`; see: [https://www.ncbi.nlm.nih.gov/genbank/genomes\_gff/](https://www.ncbi.nlm.nih.gov/genbank/genomes_gff/)
+  - **Best practices**: 
+    - We recommend that programs generating and consuming gff3 pay close attention to this value and validate it; however, validation may still fail in complex cases. Phase may be an example where the GFF3 format has reached its limit. In cases where the correct sequence may not be inferred due to post-translational modifications (e.g. selenocysteines) or problematic reference genome assemblies, use the ‘transl_except’ convention developed by NCBI on the CDS feature (transl_except=(pos:<base_range>%2Caa:<amino_acid>); https://www.ncbi.nlm.nih.gov/genbank/genomes_gff/)
+    - Optionally provide a phase pragma, if any sequences in the GFF3 file do not use the standard genetic code (id = 1, see https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/gc.prt#0107). The pragma should provide the translation table id, and the reference sequences in the GFF3 that will use that translation table id, e.g. ##phase <RefSeq ID> <translation table ID>; 
   - **Validation**: For a description of what phase means in the context of a single CDS line, see the "Column 8: phase" section of the current [GFF3 specification.](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md) Optionally provide the translation table id, and the reference sequences in the GFF3 that will use that translation table id, in a phase pragma. The validator will use the translation tables in [https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C\_DOC/lxr/source/data/gc.prt](https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/gc.prt). If no phase pragma is given, or if not all reference sequences are specified in the phase pragma, the validator will use the Standard genetic code (id 1). Protein and CDS fasta are optional but highly recommended. Validator will generate CDS/protein sequences based on the phase specified in the gff3 file.
     - If no CDS/protein fasta is available:
       - Check for internal stops in the protein sequence - validation fails if stops are present
@@ -297,19 +301,18 @@ Attributes complex metadata / functional annotations
     - Provides a format for including richer metadata.
   - **Rationale:** In general should be avoided if other mechanisms ([GPAD](http://geneontology.org/docs/gene-product-association-data-gpad-format/), [GPI](http://geneontology.org/docs/gene-product-information-gpi-format/), [all spec formats and versions](https://github.com/geneontology/go-annotation/tree/master/specs) ) are available. However, in some instances GPAD, or other formats are not sufficient or readily available for tooling. In those instances, the ability to include information such as functional annotations that track annotation provenance, gene products, or properly annotated GO evidence may be necessary.
   - **Best practices:**
-  - We discourage the use of GO terms, or any functional annotation that requires an evidence code without supplying the evidence code.
-
-  - These use of GO term or functional annotations should never be incorporated into gff within the Dbxref or Ontology\_term fields. Another file format should be used, e.g. GAF or GPAD, if possible, otherwise modeling using \&lt;complex metadata\&gt; is recommended.
-  - Also, GO terms should be updated annually - you might not want to include this as &#39;static&#39; information.
-  - In the context where metadata such as functional annotations must be included in GFF3 column 9, the general format we would suggest and has been adopted in Apollo and Artemis for GO (go\_annotations), Gene Product (gene\_product), and Provenance (provenance) annotations is \&lt;type\&gt;=\&lt;type annotation\&gt;; **.** Each type is only included once, but can include multiple type annotations. Note that \&lt;type annotation\&gt; is URL encoded **.**
-  - \&lt;type\_annotations\&gt; are URL encoded and of the format: rank=\&lt;rankA\&gt;;\&lt;key1\&gt;=\&lt;value1A\&gt;;\&lt;key2\&gt;=\&lt;value2A\&gt;,rank=\&lt;rankB\&gt;;\&lt;key1\&gt;=\&lt;value1B\&gt;;\&lt;key2\&gt;=\&lt;value2B\&gt; If we have multiple annotations, we provide a rank to indicate which would go first, though this may not always be relevant. Multiple annotations are comma-delimited. Multiple key/value pairs are semicolon delimited.
+    - We discourage the use of GO terms, or any functional annotation that requires an evidence code without supplying the evidence code.
+    - These use of GO term or functional annotations should never be incorporated into gff within the Dbxref or Ontology\_term fields. Another file format should be used, e.g. GAF or GPAD, if possible, otherwise modeling using <complex metadata> is recommended.
+    - Also, GO terms should be updated annually - you might not want to include this as &#39;static&#39; information.
+    - In the context where metadata such as functional annotations must be included in GFF3 column 9, the general format we would suggest and has been adopted in Apollo and Artemis for GO (go\_annotations), Gene Product (gene\_product), and Provenance (provenance) annotations is <type>=<type annotation>; **.** Each type is only included once, but can include multiple type annotations. Note that <type annotation> is URL encoded **.**
+    - <type_annotations> are URL encoded and of the format: rank=<rankA>;<key1>=<value1A>;<key2>=<value2A>,rank=<rankB>;<key1>=<value1B>;<key2>=<value2B>; If we have multiple annotations, we provide a rank to indicate which would go first, though this may not always be relevant. Multiple annotations are comma-delimited. Multiple key/value pairs are semicolon delimited.
 - **Validation:**
-  - \&lt;type\&gt; should be lower-case and be of the form \&lt;type1\&gt;=\&lt;type1 annotations\&gt;;\&lt;type2\&gt;=\&lt;type2 annotations\&gt;; etc.
-  - \&lt;type annotation\&gt; entries are URL encoded
-  - A \&lt;type\&gt; can have multiple \&lt;type annotations\&gt;, which are separated by a comma (url-encoded %3B).
-  - Each \&lt;type annotation\&gt; has multiple key-value pairs, separated by a semi-colon (url-encoded as %2C).
-  - \&lt;rank\&gt; is not necessary, but it is preferred if more than one annotation for a type exists.
-  - \&lt;type\&gt;, \&lt;rank\&gt;, \&lt;key\&gt; should all be lower-case.
+  - <type> should be lower-case and be of the form <type1>=<type1 annotations>;<type2>=<type2 annotations>; etc.
+  - <type annotation> entries are URL encoded
+  - A <type> can have multiple <type annotations>, which are separated by a comma (url-encoded %3B).
+  - Each <type annotation> has multiple key-value pairs, separated by a semi-colon (url-encoded as %2C).
+  - <rank> is not necessary, but it is preferred if more than one annotation for a type exists.
+  - <type>, <rank>, <key> should all be lower-case.
 - **Example:** [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.h4b9kbtmxne6](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.h4b9kbtmxne6)
 
 
@@ -341,36 +344,17 @@ Attributes complex metadata / functional annotations
 Pragmas
 =======
 
-  - **Seqid alias table**
-    - Used to cross reference multiple naming schemes for seqid values, for example, to correlate project chromosome names with NCBI accessions. Starts with ##alias-table [columns] and ends with ###. See [https://docs.google.com/document/d/180g1rfC5n\_cR6sioG\_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb](https://docs.google.com/document/d/180g1rfC5n_cR6sioG_LFGaUPNmQyDqTsPafVu4gM018/edit#bookmark=id.tr1vioe7doqb).
-
-- **Source.**
-  - This pragma is optional.
-  - The current SO recommendation is to specify the ontology of source names. However, no such ontology exists (yet).
-  - Instead, we suggest the following change. Follow the VCF specification for Info/ID: [https://samtools.github.io/hts-specs/VCFv4.3.pdf](https://samtools.github.io/hts-specs/VCFv4.3.pdf)
-  - Example: ##Source=\&lt;ID=BestRefSeq,Description=&quot;RefSeq transcript that underwent manual inspection&quot;, Software=&quot;URL here&quot;\&gt;
-  - Primarily for human consumption - no validation at this point.
-  - We discourage verbose use of this pragma. However, since it won&#39;t be validated, it is possible.
-- **Score**
-  - This pragma is optional.
-  - Format: ##Score name=&quot;[name/calculated-by]&quot;;min=[min-value]; max=[max-val];best=[lower/higher]
-  - All parameters (_name_, _min_, _max_, and _best)_ are optional, but at least one should be set.
-  - Example: ##Score name=&quot;AED (Annotation Edit Distance) score&quot;; min=0;max=1;best=lower
-- **Phase.**
-  - This pragma is optional. It is designed to handle reference sequences that do not use the standard genetic code (id = 1, see [https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C\_DOC/lxr/source/data/gc.prt#0107](https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/gc.prt#0107))
-  - Format: ##Phase \&lt;RefSeq ID\&gt; \&lt;translation table ID\&gt;;
-  - Example (invertebrate mitochondrial sequence in genome assembly GCF\_013339725.1; all other sequences follow the standard genetic code): ##Phase \&lt;NC\_023335.1\&gt; \&lt;5\&gt;
 - **Dbxref**
   - **This pragma is optional**
   - **Format: ##dbxref=\&lt;Namespace:ID,refsrc=URL\&gt;**
   - **Example: ##dbxref=ncbiprotein:CAA71118.1,refsrc= identifiers.org; (which resolves to** **[https://identifiers.org/ncbiprotein:CAA71118.](https://identifiers.org/ncbiprotein:CAA71118.1)[1](https://identifiers.org/ncbiprotein:CAA71118.1)****)**
   - **Addendum: This requires that the database providing the xref register at and obtain a namespace from Identifiers.org.**
 - **Ontology URIs** 
-  - This pragma is optional.
-  - Format: ## Ontology <URL>
-  - Example: ## Ontology [http://purl.obolibrary.org/obo/so.obo](http://purl.obolibrary.org/obo/so.obo)
-  - The ontology URL should be the official OBO version permanent URL in unencoded format. 
-- **Species** - don&#39;t use URLs as in the spec, as these can vary. Use an OBO CURIE. E.g. NCBITaxon:9606
+  - In the current GFF3 specification, ontology URIs, for example ##feature-ontology URI, can be specified via cv URLs (e.g. http://song.cvs.sourceforge.net/*checkout*/song/ontology/sofa.obo?revision=1.6). These URLs should be avoided. Instead, we recommend using the official OBO version IRI PURLs, for example http://purl.obolibrary.org/obo/so.obo. 
+  - Example: ## feature-ontology http://purl.obolibrary.org/obo/so.obo
+- **Species**
+  - The current specification recommends using NCBI URLs to specify the species that annotations are derived from in the ##species pragma. We recommend using an OBO CURIE, instead. 
+  - Example: ##species NCBITaxon:9606
 
 
 # Other caveats and unresolved issues
@@ -393,9 +377,15 @@ Examples
 
 
 
-**Seqid (Column 1)**
+**Seqid pragma (Column 1)**
 
-#!alias-table [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/005/GCF\_000005005.2\_B73\_RefGen\_v4/GCF\_000005005.2\_B73\_RefGen\_v4\_assembly\_report.txt](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/005/GCF_000005005.2_B73_RefGen_v4/GCF_000005005.2_B73_RefGen_v4_assembly_report.txt)
+Example of an alias table pragma for an NCBI alias table:
+##alias-table https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/005/GCF_000005005.2_B73_RefGen_v4/GCF_000005005.2_B73_RefGen_v4_assembly_report.txt
+
+Example of a custom alias table pragma: 
+##alias-table Sequence-name Refseq-accession
+chr1	NC_024459.2
+chr2	NC_024460.2
 
 **Source (column 2)**
 
@@ -416,6 +406,9 @@ mRNA
 SL4.0ch00 maker\_ITAG mRNA 93750 94430 . + .
 
 ID=mRNA:Solyc00g500001.1.1;Parent=gene:Solyc00g500001.1;Name=Solyc00g500001.1.1;Note=Retrovirus-related Pol polyprotein from transposon TNT 1-94
+
+**Source pragma**
+##Source=<ID=BestRefSeq,Description="RefSeq transcript that underwent manual inspection", Software=”URL here”>
 
 **Type (column 3, example is from a RefSeq gff3 file)**
 
@@ -461,21 +454,14 @@ SNP
 
 Araip.B01 PolymorphicArray SNP 2975884 2975884 . . . Name=AX-176823085;ID=21305;origin=A.ipaensis;alleles=A%2FG
 
-**Score (column 6)**
+**Score pragma (column 6)**
 
-Format:
-
-#!score score-name program program-version score-range decreases|increases.
-
+##score score-name program program-version score-range decreases|increases.
 Example: score is the AED (Annotation Edit Distance) for a gene model feature, generated by MAKER-P.
-
 ##gff-version 3
-
 # organism zea mays
-
-#!score AED MAKER-P 3.0 0-1 increases
-
-chr1 NAM mRNA 107080 108196 **0.38** - . ID=45221;Parent=Zm00001e000004;transcript\_id=Zm00001e000004\_T001
+##Score name="AED (Annotation Edit Distance) score"; min=0;max=1;best=lower
+chr1 NAM mRNA 107080 108196 0.38 - . ID=45221;Parent=Zm00001e000004;transcript_id=Zm00001e000004_T001
 
 **Phase (column 8).**
 
@@ -529,13 +515,8 @@ GAGCTCGGGTGGTAATGGCATGTCGCAATTTGGAAAAAGCGGACGAGGCGGCCAAAGATATAAGGAAAACGCTGGAAGGG
 
 ARVVMACRNLEKADEAAKDIRKTLEGVEGVGQITVKHLDLSSLSSVRTCAEQLLKEEPNIHLLINNA
 
-**Phase pragma (column 8).**
-
-#!Translation-table 5 scaffold1,scaffold2
-
-Where &#39;5&#39; refers to the genetic code id specified in [https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C\_DOC/lxr/source/data/gc.prt](https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/gc.prt). The example here, 5, refers to the invertebrate mitochondrial code, which can also be found here: [https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C\_DOC/lxr/source/data/gc.prt#0150](https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/gc.prt#0150).
-
-Where scaffold1,scaffold2 refer to the reference sequences that should use Translation-table 5.
+Phase pragma (column 8)
+##Translation-table 5 scaffold1,scaffold2
 
 **Attributes (column 9): ID (example is from a RefSeq gff3 file):**
 
