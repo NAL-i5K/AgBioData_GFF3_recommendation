@@ -346,8 +346,8 @@ Pragmas
 
 - **Dbxref**
   - **This pragma is optional**
-  - **Format: ##dbxref=\&lt;Namespace:ID,refsrc=URL\&gt;**
-  - **Example: ##dbxref=ncbiprotein:CAA71118.1,refsrc= identifiers.org; (which resolves to** **[https://identifiers.org/ncbiprotein:CAA71118.](https://identifiers.org/ncbiprotein:CAA71118.1)[1](https://identifiers.org/ncbiprotein:CAA71118.1)****)**
+  - **Format: ##dbxref=\&lt;Database:ID\&gt;**
+  - **Example: ##dbxref=ncbiprotein:CAA71118.1 (which resolves to** **[https://identifiers.org/ncbiprotein:CAA71118.](https://identifiers.org/ncbiprotein:CAA71118.1)[1](https://identifiers.org/ncbiprotein:CAA71118.1)****)**
   - **Addendum: This requires that the database providing the xref register at and obtain a namespace from Identifiers.org.**
 - **Ontology URIs** 
   - In the current GFF3 specification, ontology URIs, for example ##feature-ontology URI, can be specified via cv URLs (e.g. http://song.cvs.sourceforge.net/*checkout*/song/ontology/sofa.obo?revision=1.6). These URLs should be avoided. Instead, we recommend using the official OBO version IRI PURLs, for example http://purl.obolibrary.org/obo/so.obo. 
